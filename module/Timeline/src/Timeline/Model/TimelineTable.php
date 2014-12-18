@@ -20,7 +20,6 @@ class TimelineTable
 
     public function getTimeline($id)
     {
-        $id  = (int) $id;
         $rowset = $this->tableGateway->select(array('id_timeline' => $id));
         $row = $rowset->current();
         if (!$row) {
@@ -41,15 +40,15 @@ class TimelineTable
             'media_caption' => $timeline->media_caption,
             'media_thumbnail' => $timeline->media_thumbnail,
             'type' => $timeline->type,
-            'id_tag' => $timeline->id_tag
+            'tag_id_tag' => $timeline->tag_id_tag
         );
 
-        $id = (int) $timeline->id;
+        $id = $timeline->id_timeline;
         if ($id == 0) {
             $this->tableGateway->insert($data);
         } else {
             if ($this->getTimeline($id)) {
-                $this->tableGateway->update($data, array('id' => $id));
+                $this->tableGateway->update($data, array('id_timeline' => $id));
             } else {
                 throw new \Exception('Timeline id does not exist');
             }
@@ -58,6 +57,6 @@ class TimelineTable
 
     public function deleteTimeline($id)
     {
-        $this->tableGateway->delete(array('id_timeline' => (int) $id));
+        $this->tableGateway->delete(array('id_timeline' => $id));
     }
 }

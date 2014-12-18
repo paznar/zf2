@@ -10,7 +10,7 @@ return array(
     // The following section is new and should be added to your file
     'router' => array(
         'routes' => array(
-            'album' => array(
+            'timeline' => array(
                 'type'    => 'segment',
                 'options' => array(
                     'route'    => '/timeline[/][:action][/:id]',
@@ -40,7 +40,7 @@ return array(
     
     'view_manager' => array(
         'template_path_stack' => array(
-            'album' => __DIR__ . '/../view',
+            'timeline' => __DIR__ . '/../view',
         ),
     ),
 );

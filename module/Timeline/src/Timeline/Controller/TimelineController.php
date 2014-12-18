@@ -30,10 +30,10 @@ class TimelineController extends AbstractActionController
         
             if ($form->isValid()) {
                 $timeline->exchangeArray($form->getData());
-                $this->getAlbumTable()->saveAlbum($timeline);
+                $this->getTimelineTable()->saveTimeline($timeline);
         
                 // Redirect to list of albums
-                return $this->redirect()->toRoute('album');
+                return $this->redirect()->toRoute('timeline');
             }
         }
         return array('form' => $form);
@@ -41,9 +41,9 @@ class TimelineController extends AbstractActionController
 
     public function editAction()
     {
-        $id = (int) $this->params()->fromRoute('id', 0);
+        $id = $this->params()->fromRoute('id', 0);
         if (!$id) {
-            return $this->redirect()->toRoute('album', array(
+            return $this->redirect()->toRoute('timeline', array(
                 'action' => 'add'
             ));
         }
@@ -51,10 +51,10 @@ class TimelineController extends AbstractActionController
         // Get the Album with the specified id.  An exception is thrown
         // if it cannot be found, in which case go to the index page.
         try {
-            $timeline = $this->getAlbumTable()->getAlbum($id);
+            $timeline = $this->getTimelineTable()->getTimeline($id);
         }
         catch (\Exception $ex) {
-            return $this->redirect()->toRoute('album', array(
+            return $this->redirect()->toRoute('timeline', array(
                 'action' => 'index'
             ));
         }
@@ -69,24 +69,24 @@ class TimelineController extends AbstractActionController
             $form->setData($request->getPost());
         
             if ($form->isValid()) {
-                $this->getAlbumTable()->saveAlbum($timeline);
+                $this->getTimelineTable()->saveTimeline($timeline);
         
                 // Redirect to list of albums
-                return $this->redirect()->toRoute('album');
+                return $this->redirect()->toRoute('timeline');
             }
         }
         
         return array(
-            'id' => $id,
+            'id_timeline' => $id,
             'form' => $form,
         );
     }
 
     public function deleteAction()
     {
-        $id = (int) $this->params()->fromRoute('id', 0);
+        $id = $this->params()->fromRoute('id', 0);
         if (!$id) {
-            return $this->redirect()->toRoute('album');
+            return $this->redirect()->toRoute('timeline');
         }
         
         $request = $this->getRequest();
@@ -94,17 +94,17 @@ class TimelineController extends AbstractActionController
             $del = $request->getPost('del', 'No');
         
             if ($del == 'Yes') {
-                $id = (int) $request->getPost('id');
-                $this->getAlbumTable()->deleteAlbum($id);
+                $id = $request->getPost('id_timeline');
+                $this->getTimelineTable()->deleteTimeline($id);
             }
         
             // Redirect to list of albums
-            return $this->redirect()->toRoute('album');
+            return $this->redirect()->toRoute('timeline');
         }
         
         return array(
-            'id'    => $id,
-            'album' => $this->getAlbumTable()->getAlbum($id)
+            'id_timeline'    => $id,
+            'timeline' => $this->getTimelineTable()->getTimeline($id)
         );
     }
     

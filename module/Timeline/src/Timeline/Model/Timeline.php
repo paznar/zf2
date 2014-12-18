@@ -8,7 +8,7 @@ use Zend\InputFilter\InputFilterInterface;
 
 class Timeline
 {
-    public $id;
+    public $id_timeline;
     public $start_date;
     public $end_date;
     public $headline;
@@ -18,11 +18,11 @@ class Timeline
     public $media_caption;
     public $media_thumbnail;
     public $type;
-    public $id_tag;
+    public $tag_id_tag;
 
     public function exchangeArray($data)
     {
-        $this->id     = (!empty($data['id_timeline'])) ? $data['id_timeline'] : null;
+        $this->id_timeline    = (!empty($data['id_timeline'])) ? $data['id_timeline'] : null;
         $this->start_date = (!empty($data['start_date'])) ? $data['start_date'] : null;
         $this->end_date  = (!empty($data['end_date'])) ? $data['end_date'] : null;
         $this->headline     = (!empty($data['headline'])) ? $data['headline'] : null;
@@ -32,7 +32,7 @@ class Timeline
         $this->media_caption = (!empty($data['media_caption'])) ? $data['media_caption'] : null;
         $this->media_thumbnail  = (!empty($data['media_thumbnail'])) ? $data['media_thumbnail'] : null;
         $this->type     = (!empty($data['type'])) ? $data['type'] : null;
-        $this->id_tag = (!empty($data['id_tag'])) ? $data['id_tag'] : null;
+        $this->tag_id_tag = (!empty($data['tag_id_tag'])) ? $data['tag_id_tag'] : null;
     }
     
     // Add content to these methods:
@@ -49,9 +49,6 @@ class Timeline
             $inputFilter->add(array(
                 'name'     => 'id_timeline',
                 'required' => true,
-                'filters'  => array(
-                    array('name' => 'Int'),
-                ),
             ));
     
             $inputFilter->add(array(

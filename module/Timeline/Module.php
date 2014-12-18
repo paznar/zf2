@@ -1,7 +1,6 @@
 <?php
 namespace Timeline;
 
-// Add these import statements:
 use Timeline\Model\Timeline;
 use Timeline\Model\TimelineTable;
 use Zend\Db\ResultSet\ResultSet;
@@ -31,7 +30,6 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
         return include __DIR__ . '/config/module.config.php';
     }
     
-    // Add this method:
     public function getServiceConfig()
     {
         return array(

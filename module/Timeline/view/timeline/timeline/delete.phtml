@@ -1,24 +1,32 @@
  <?php
  // module/Album/view/album/album/delete.phtml:
 
- $title = 'Delete album';
+ $title = 'Delete timeline';
  $this->headTitle($title);
  ?>
  <h1><?php echo $this->escapeHtml($title); ?></h1>
 
  <p>Are you sure that you want to delete
-     '<?php echo $this->escapeHtml($album->title); ?>' by
-     '<?php echo $this->escapeHtml($album->artist); ?>'?
+     '<?php echo $this->escapeHtml($timeline->start_date);?>'
+     '<?php echo $this->escapeHtml($timeline->end_date);?>'
+     '<?php echo $this->escapeHtml($timeline->headline);?>'
+     '<?php echo $this->escapeHtml($timeline->text);?>'
+     '<?php echo $this->escapeHtml($timeline->media);?>'
+     '<?php echo $this->escapeHtml($timeline->media_credit);?>'
+     '<?php echo $this->escapeHtml($timeline->media_caption);?>'
+     '<?php echo $this->escapeHtml($timeline->media_thumbnail);?>'
+     '<?php echo $this->escapeHtml($timeline->type);?>'
+     '<?php echo $this->escapeHtml($timeline->tag_id_tag);?>'?
  </p>
  <?php
- $url = $this->url('album', array(
+ $url = $this->url('timeline', array(
      'action' => 'delete',
-     'id'     => $this->id,
+     'id_timeline'     => $this->id_timeline,
  ));
  ?>
  <form action="<?php echo $url; ?>" method="post">
  <div>
-     <input type="hidden" name="id" value="<?php echo (int) $album->id; ?>" />
+     <input type="hidden" name="id_timeline" value="<?php echo (int) $timeline->id_timeline; ?>" />
      <input type="submit" name="del" value="Yes" />
      <input type="submit" name="del" value="No" />
  </div>

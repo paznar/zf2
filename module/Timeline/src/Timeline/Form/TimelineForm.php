@@ -43,6 +43,13 @@ class TimelineForm extends Form
             ),
         ));
         $this->add(array(
+            'name' => 'media',
+            'type' => 'Text',
+            'options' => array(
+                'label' => 'Media',
+            ),
+        ));
+        $this->add(array(
             'name' => 'media_credit',
             'type' => 'Text',
             'options' => array(

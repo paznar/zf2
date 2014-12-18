@@ -3,8 +3,8 @@ namespace Album\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Album\Model\Timeline;          
-use Album\Form\TimelineForm;
+use Album\Model\Album;          
+use Album\Form\AlbumForm;
 
 class AlbumController extends AbstractActionController
 {
@@ -19,12 +19,12 @@ class AlbumController extends AbstractActionController
 
     public function addAction()
     {
-        $form = new TimelineForm();
+        $form = new AlbumForm();
         $form->get('submit')->setValue('Add');
         
         $request = $this->getRequest();
         if ($request->isPost()) {
-            $album = new Timeline();
+            $album = new Album();
             $form->setInputFilter($album->getInputFilter());
             $form->setData($request->getPost());
         
@@ -59,7 +59,7 @@ class AlbumController extends AbstractActionController
             ));
         }
         
-        $form  = new TimelineForm();
+        $form  = new AlbumForm();
         $form->bind($album);
         $form->get('submit')->setAttribute('value', 'Edit');
         

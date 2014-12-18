@@ -29,7 +29,7 @@ class AlbumTable
         return $row;
     }
 
-    public function saveAlbum(Timeline $album)
+    public function saveAlbum(Album $album)
     {
         $data = array(
             'artist' => $album->artist,
