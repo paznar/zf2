@@ -25,10 +25,13 @@ class TimelineController extends AbstractActionController
         $request = $this->getRequest();
         if ($request->isPost()) {
             $timeline = new Timeline();
+//             \Zend\Debug\Debug::dump($form);
             $form->setInputFilter($timeline->getInputFilter());
             $form->setData($request->getPost());
-        
-            if ($form->isValid()) {
+//                         \Zend\Debug\Debug::dump($request->getPost());
+            
+            
+            if ($form->isValid()) {               
                 $timeline->exchangeArray($form->getData());
                 $this->getTimelineTable()->saveTimeline($timeline);
         

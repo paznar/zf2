@@ -16,14 +16,14 @@ class TimelineForm extends Form
         ));
         $this->add(array(
             'name' => 'start_date',
-            'type' => 'Text',
+            'type' => 'date',
             'options' => array(
                 'label' => 'Start date',
             ),
         ));
         $this->add(array(
             'name' => 'end_date',
-            'type' => 'Text',
+            'type' => 'date',
             'options' => array(
                 'label' => 'End date',
             ),

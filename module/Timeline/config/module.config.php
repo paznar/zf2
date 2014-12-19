@@ -27,17 +27,6 @@ return array(
         ),
     ),
     
-    'home' => array(
-        'type' => 'Zend\Mvc\Router\Http\Literal',
-        'options' => array(
-            'route'    => '/',
-            'defaults' => array(
-                'controller' => 'Application\Controller\Timeline',
-                'action'     => 'index',
-            ),
-        ),
-    ),
-    
     'view_manager' => array(
         'template_path_stack' => array(
             'timeline' => __DIR__ . '/../view',

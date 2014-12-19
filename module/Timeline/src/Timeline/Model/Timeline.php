@@ -19,6 +19,8 @@ class Timeline
     public $media_thumbnail;
     public $type;
     public $tag_id_tag;
+    
+    public $inputFilter;
 
     public function exchangeArray($data)
     {
@@ -49,6 +51,9 @@ class Timeline
             $inputFilter->add(array(
                 'name'     => 'id_timeline',
                 'required' => true,
+                'filters'  => array(
+                    array('name' => 'Int'),
+                ),
             ));
     
             $inputFilter->add(array(
@@ -69,10 +74,8 @@ class Timeline
                     ),
                 ),
             ));
-    
             $this->inputFilter = $inputFilter;
         }
-    
         return $this->inputFilter;
     }
     
